@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // Im
 import HomePage from "./pages/HomePage";
 import MapPage from "./pages/MapPage";
 import HealthReportPage from "./pages/HealthReportPage";
+import NotFoundPage from "./pages/NotFoundPage";
 import Footer from "./components/Footer";
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
 						<Route path="/" element={<HomePage />} />
 						<Route path="/map" element={<MapPage />} />
 						<Route path="/health-report" element={<HealthReportPage />} />
+						<Route path="*" element={<NotFoundPage />} />
 					</Routes>
 				</div>
 			</Router>
