@@ -1,21 +1,18 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavL, NavLink, NavLinkink } from "react-router-dom";
 import desktopLogo from "../images/SCNet Logo 2024 Paths w.png";
 import { navLinks } from "../data";
 import mobileLogo from "../images/marker-icon.png";
 import { AiOutlineClose, AiOutlineMenuFold } from "react-icons/ai";
 import { motion } from "framer-motion";
+import NavLinks from "./NavLinks";
 
 const NavBar = () => {
 	const [isMobile, setIsMobile] = useState(false);
 
 	const handleMenuToggle = () => {
 		setIsMobile((prev) => !prev);
-		if (!isMobile) {
-			document.body.style.overflow = "hidden";
-		} else {
-			document.body.style.overflow = "auto";
-		}
+		document.body.style.overflow = isMobile ? "auto" : "hidden";
 	};
 
 	const menuVariants = {
@@ -36,38 +33,28 @@ const NavBar = () => {
 			{/* Desktop Navigation */}
 			<nav className="hidden sm:flex px-4 md:px-12 lg:px-16 justify-between items-center text-white shadow-navbar bg-zinc-800 text-sm font-regular h-20 sticky top-0">
 				{/* Brand */}
-				<Link to="/">
+				<NavLink to="/">
 					<img
 						src={desktopLogo}
 						alt="Desktop Company Logo"
 						className="sm:w-56 md:w-64 lg:w-72"
 					/>
-				</Link>
+				</NavLink>
 
 				{/* Navigation links */}
 				<div className="flex items-center">
-					<>
-						{navLinks.map((link) => (
-							<Link
-								key={link.title}
-								to={link.path}
-								className="sm:px-1 md:px-2 lg:px-3 hover:text-red-500 transition-all duration-300"
-							>
-								{link.title}
-							</Link>
-						))}
-						<button className="bg-red-600 px-5 py-1.5 rounded-lg ml-2 lg:ml-2 font-medium hover:brightness-125 active:scale-95 transition-all duration-300">
-							Login
-						</button>
-					</>
+					<NavLinks />
+					<button className="bg-red-600 px-5 py-1.5 rounded-lg ml-2 lg:ml-2 font-medium hover:brightness-125 active:scale-95 transition-all duration-300">
+						Login
+					</button>
 				</div>
 			</nav>
 			{/* Mobile Navigation */}
 			<nav className="flex sm:hidden px-4 md:px-12 lg:px-16 justify-between items-center text-white shadow-navbar bg-zinc-800 text-sm font-regular h-20 sticky top-0 z-[99]">
 				{/* Brand */}
-				<Link to="/">
+				<NavLink to="/">
 					<img src={mobileLogo} alt="Mobile Company Logo" className="w-20" />
-				</Link>
+				</NavLink>
 
 				<AiOutlineMenuFold
 					size={42}
@@ -98,16 +85,10 @@ const NavBar = () => {
 						className="cursor-pointer mb-2"
 						onClick={handleMenuToggle}
 					/>
-					{navLinks.map((link) => (
-						<Link
-							key={link.title}
-							to={link.path}
-							className="block py-1.5 hover:text-red-500 transition-all duration-300 text-xl"
-							onClick={handleMenuToggle}
-						>
-							{link.title}
-						</Link>
-					))}
+					{/* Navigation links */}
+					<div className="flex flex-col text-xl gap-2">
+						<NavLinks />
+					</div>
 					<button
 						className="w-full text-left py-1.5 hover:text-red-500 transition-all duration-300 text-xl"
 						onClick={handleMenuToggle}
