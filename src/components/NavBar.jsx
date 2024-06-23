@@ -31,20 +31,19 @@ const NavBar = () => {
 	return (
 		<>
 			{/* Desktop Navigation */}
-			<nav className="hidden sm:flex px-4 md:px-12 lg:px-16 justify-between items-center text-white shadow-navbar bg-zinc-800 text-sm font-regular h-20 sticky top-0">
+			<nav className="hidden sm:flex px-4 md:px-12 lg:px-16 justify-between items-center text-white shadow-navbar bg-zinc-800 backdrop-blur text-sm font-regular h-20 sticky top-0">
 				{/* Brand */}
 				<NavLink to="/">
 					<img
 						src={desktopLogo}
 						alt="Desktop Company Logo"
-						className="sm:w-56 md:w-64 lg:w-72"
+						className=" sm:w-56 md:w-64 lg:w-72 z-[99]"
 					/>
 				</NavLink>
-
 				{/* Navigation links */}
 				<div className="flex items-center">
 					<NavLinks />
-					<button className="bg-red-600 px-5 py-1.5 rounded-lg ml-2 lg:ml-2 font-medium hover:brightness-125 active:scale-95 transition-all duration-300">
+					<button className="bg-[#E03F3F] px-5 py-1.5 rounded-lg ml-2 lg:ml-2 font-medium hover:brightness-125 active:scale-95 transition-all duration-300">
 						Login
 					</button>
 				</div>

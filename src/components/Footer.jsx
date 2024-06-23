@@ -1,12 +1,12 @@
 import React from "react";
-import "../CSS/Footer.css";
+// import "../CSS/Footer.css";
 import "../pages/HomePage";
 import "../pages/MapPage";
 import "../pages/HealthReportPage";
-
+import { navLinks } from "../data/index";
 const Footer = () => {
 	return (
-		<footer>
+		<footer className=" w-full flex flex-col justify-center items-center">
 			<nav>
 				<ul>
 					{/* Replace these links with your actual navigation items */}
