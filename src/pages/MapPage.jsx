@@ -115,7 +115,7 @@ const MapPage = () => {
 					zoom={5}
 					style={{
 						height: "450px",
-						width: "75%",
+						width: "100%",
 						marginLeft: "auto",
 						marginRight: "auto",
 						zIndex: -1,

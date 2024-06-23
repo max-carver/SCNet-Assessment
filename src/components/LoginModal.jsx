@@ -58,7 +58,7 @@ const LoginModal = ({ onClick }) => {
 	};
 
 	return (
-		<div className="bg-white px-5 py-2 rounded-lg shadow-xl absolute top-1/4 inset-0 mx-auto w-1/3 h-1/2 border-2 z-[99] flex justify-between">
+		<div className="bg-white px-5 py-2 rounded-lg shadow-xl absolute top-1/4 inset-0 mx-auto w-10/12 lg:w-2/3 xl:w-1/3 h-1/2 border-2 z-[99] flex justify-between">
 			<div className="flex flex-col items-start justify-start w-full space-y-2">
 				<div className="flex flex-col items-center w-full mb-2">
 					<h2 className="text-2xl font-bold text-center">Login</h2>

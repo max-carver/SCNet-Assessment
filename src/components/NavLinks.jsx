@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { navLinks } from "../data";
 
-const NavLinks = ({ handleMenuToggle }) => (
+const NavLinks = ({ onClick }) => (
 	<>
 		{navLinks.map((link) => (
 			<NavLink
@@ -13,7 +13,7 @@ const NavLinks = ({ handleMenuToggle }) => (
 						isActive && "text-zinc-400 hover:text-zinc-400"
 					}`
 				}
-				onClick={handleMenuToggle}
+				onClick={onClick}
 			>
 				{link.title}
 			</NavLink>

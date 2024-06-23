@@ -46,7 +46,7 @@ const NavBar = ({ user }) => {
 					<NavLinks />
 					{user ? (
 						<span
-							className="cursor-pointer border-l pl-2"
+							className="cursor-pointer border-l pl-2 text-red-300 hover:brightness-125 transition-all duration-300"
 							onClick={() => {
 								localStorage.removeItem("username");
 								window.location.reload();
@@ -128,14 +128,33 @@ const NavBar = ({ user }) => {
 					/>
 					{/* Navigation links */}
 					<div className="flex flex-col text-xl gap-2">
-						<NavLinks />
+						<NavLinks
+							onClick={() => {
+								setIsMobile(false);
+							}}
+						/>
 					</div>
-					<button
-						className="w-full text-left py-1.5 hover:text-red-500 transition-all duration-300 text-xl"
-						onClick={handleMenuToggle}
-					>
-						Login
-					</button>
+					{user ? (
+						<button
+							className="cursor-pointer text-xl pt-2 text-red-900 hover:brightness-125 transition-all duration-300"
+							onClick={() => {
+								localStorage.removeItem("username");
+								window.location.reload();
+							}}
+						>
+							Sign out
+						</button>
+					) : (
+						<button
+							className="hover:brightness-125 text-xl mt-2 transition-all duration-300"
+							onClick={() => {
+								setShowModal((prev) => !prev);
+								setIsMobile(false);
+							}}
+						>
+							Login
+						</button>
+					)}
 				</motion.div>
 			</nav>
 		</>

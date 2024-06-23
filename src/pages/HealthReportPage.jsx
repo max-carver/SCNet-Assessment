@@ -66,51 +66,53 @@ const HealthReportPage = () => {
 			);
 
 		return (
-			<table className="w-full table-auto bg-zinc-50 shadow-md border border-zinc-400">
-				<thead className="text-center">
-					<tr className="border odd:bg-zinc-100">
-						<th className="py-3 border">Corporate Name</th>
-						<th className="border">Active BEEs</th>
-						<th className="border">Active TCCs</th>
-						<th className="border">Active Workman Comp</th>
-						<th className="border">Expired BEEs</th>
-						<th className="border">Expired TCCs</th>
-						<th className="border">Expired Workman Comp</th>
-						<th className="border"># of Vendors</th>
-					</tr>
-				</thead>
-				<tbody className="text-center ">
-					{displayData.map((item, index) => (
-						<tr key={index}>
-							<td className="py-2 border border-b-transparent">
-								{item.corporate_Name}
-							</td>
-							<td className="border border-b-transparent">
-								{item.active_bees}
-							</td>
-							<td className="border border-b-transparent">
-								{item.active_tccs}
-							</td>
-							<td className="border border-b-transparent">
-								{item.active_workman_comp}
-							</td>
-							<td className="border border-b-transparent">
-								{item.expired_bees}
-							</td>
-							<td className="border border-b-transparent">
-								{item.expired_tccs}
-							</td>
-							<td className="border border-b-transparent">
-								{item.expired_workman_comp}
-							</td>
-							<td className="border border-b-transparent">
-								{item.number_of_vendors}
-							</td>
-							{/* Render more data cells as needed */}
+			<div className="overflow-x-auto">
+				<table className="min-w-full table-auto bg-zinc-50 shadow-md border border-zinc-400">
+					<thead className="text-center">
+						<tr className="border odd:bg-zinc-100 text-xs sm:text-sm lg:text-md">
+							<th className="py-3 border">Corporate Name</th>
+							<th className="border">Active BEEs</th>
+							<th className="border">Active TCCs</th>
+							<th className="border">Active Workman Comp</th>
+							<th className="border">Expired BEEs</th>
+							<th className="border">Expired TCCs</th>
+							<th className="border">Expired Workman Comp</th>
+							<th className="border"># of Vendors</th>
 						</tr>
-					))}
-				</tbody>
-			</table>
+					</thead>
+					<tbody className="text-center text-xs sm:text-sm">
+						{displayData.map((item, index) => (
+							<tr key={index}>
+								<td className="py-2 border border-b-transparent">
+									{item.corporate_Name}
+								</td>
+								<td className="border border-b-transparent">
+									{item.active_bees}
+								</td>
+								<td className="border border-b-transparent">
+									{item.active_tccs}
+								</td>
+								<td className="border border-b-transparent">
+									{item.active_workman_comp}
+								</td>
+								<td className="border border-b-transparent">
+									{item.expired_bees}
+								</td>
+								<td className="border border-b-transparent">
+									{item.expired_tccs}
+								</td>
+								<td className="border border-b-transparent">
+									{item.expired_workman_comp}
+								</td>
+								<td className="border border-b-transparent">
+									{item.number_of_vendors}
+								</td>
+								{/* Render more data cells as needed */}
+							</tr>
+						))}
+					</tbody>
+				</table>
+			</div>
 		);
 	};
 
@@ -120,8 +122,10 @@ const HealthReportPage = () => {
 
 	return (
 		<div className="px-4 md:px-12 lg:px-16 py-8 bg-zinc-100">
-			<h1 className="text-3xl mb-8 text-center font-bold">Health Report</h1>
-			<div className="my-4">
+			<h1 className="text-3xl mb-2 lg:mb-8 text-center font-bold">
+				Health Report
+			</h1>
+			<div className="my-4 flex flex-col justify-center items-center">
 				<label htmlFor="corporateSelect" className="mr-2">
 					Select Corporate:
 				</label>
