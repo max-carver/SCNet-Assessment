@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css"; // Leaflet CSS
-import "../CSS/MapPage.css";
 import L from "leaflet";
 import iconImage from "../images/marker-icon.png"; // Path to your icon image
 
@@ -105,14 +104,23 @@ const MapPage = () => {
 	const [activeProvince, setActiveProvince] = useState(null);
 
 	return (
-		<div>
-			<h1>South Africa Provinces</h1>
+		<div className="px-4 md:px-12 lg:px-16 w-full overflow-hidden py-8">
+			<h1 className="text-3xl mb-8 text-center font-bold">
+				South Africa Provinces
+			</h1>
 
-			<div class="map">
+			<div>
 				<MapContainer
 					center={[-29.0739, 24.7128]}
 					zoom={5}
-					style={{ height: "500px", width: "50%" }}
+					style={{
+						height: "450px",
+						width: "75%",
+						marginLeft: "auto",
+						marginRight: "auto",
+						zIndex: -1,
+						borderRadius: "16px",
+					}}
 				>
 					<TileLayer
 						attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
