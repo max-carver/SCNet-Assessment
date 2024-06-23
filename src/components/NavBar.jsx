@@ -1,17 +1,18 @@
 import React, { useState } from "react";
-import { NavL, NavLink, NavLinkink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import desktopLogo from "../images/SCNet Logo 2024 Paths w.png";
-import { navLinks } from "../data";
 import mobileLogo from "../images/marker-icon.png";
 import { AiOutlineClose, AiOutlineMenuFold } from "react-icons/ai";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import NavLinks from "./NavLinks";
+import LoginModal from "./LoginModal";
 
-const NavBar = () => {
+const NavBar = ({ user }) => {
 	const [isMobile, setIsMobile] = useState(false);
-
+	const [showModal, setShowModal] = useState(false);
 	const handleMenuToggle = () => {
 		setIsMobile((prev) => !prev);
+		// 'Disables' screen when mobile menu is open
 		document.body.style.overflow = isMobile ? "auto" : "hidden";
 	};
 
@@ -43,11 +44,51 @@ const NavBar = () => {
 				{/* Navigation links */}
 				<div className="flex items-center">
 					<NavLinks />
-					<button className="bg-[#E03F3F] px-5 py-1.5 rounded-lg ml-2 lg:ml-2 font-medium hover:brightness-125 active:scale-95 transition-all duration-300">
-						Login
-					</button>
+					{user ? (
+						<span
+							className="cursor-pointer border-l pl-2"
+							onClick={() => {
+								localStorage.removeItem("username");
+								window.location.reload();
+							}}
+						>
+							Sign out
+						</span>
+					) : (
+						<button
+							className="bg-[#E03F3F] px-5 py-1.5 rounded-lg ml-2 lg:ml-2 font-medium hover:brightness-125 active:scale-95 transition-all duration-300"
+							onClick={() => setShowModal((prev) => !prev)}
+						>
+							Login
+						</button>
+					)}
 				</div>
 			</nav>
+
+			{/* Nice transition for showing and hiding Login Modal */}
+			<AnimatePresence>
+				{showModal && (
+					<motion.div
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						exit={{ opacity: 0 }}
+						transition={{ duration: 0.25 }}
+					>
+						<LoginModal onClick={() => setShowModal((prev) => !prev)} />
+					</motion.div>
+				)}
+			</AnimatePresence>
+
+			{showModal && (
+				// Overlay
+				<motion.div
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 0.5 }}
+					exit={{ opacity: 0 }}
+					className="fixed inset-0 bg-black z-10"
+					onClick={handleMenuToggle}
+				/>
+			)}
 			{/* Mobile Navigation */}
 			<nav className="flex sm:hidden px-4 md:px-12 lg:px-16 justify-between items-center text-white shadow-navbar bg-zinc-800 text-sm font-regular h-20 sticky top-0 z-[99]">
 				{/* Brand */}
@@ -63,6 +104,7 @@ const NavBar = () => {
 
 				{/* Navigation Links */}
 				{isMobile && (
+					// Overlay
 					<motion.div
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 0.5 }}
