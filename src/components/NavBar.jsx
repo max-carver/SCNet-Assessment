@@ -31,7 +31,7 @@ const NavBar = () => {
 	return (
 		<>
 			{/* Desktop Navigation */}
-			<nav className="hidden sm:flex px-4 md:px-12 lg:px-16 justify-between items-center text-white shadow-navbar bg-zinc-800 backdrop-blur text-sm font-regular h-20 sticky top-0">
+			<nav className="hidden sm:flex px-4 md:px-12 lg:px-16 justify-between items-center text-white shadow-navbar bg-zinc-800 backdrop-blur text-sm font-regular h-20 sticky top-0 z-[100]">
 				{/* Brand */}
 				<NavLink to="/">
 					<img
